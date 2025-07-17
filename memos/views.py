@@ -7,9 +7,11 @@ from .models import Memo
 # Create your views here.
 
 class MemoSerializer(serializers.ModelSerializer):
+    owner_username = serializers.CharField(source='owner.username', read_only=True)
+    
     class Meta:
         model = Memo
-        fields = '__all__'
+        fields = ['id', 'title', 'content', 'owner_username', 'created_at']
 
 class MemoView(APIView):
     def get(self, request, memo_id):

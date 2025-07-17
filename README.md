@@ -36,14 +36,16 @@ python manage.py migrate
 4. サンプルデータ作成
 ```bash
 python manage.py shell -c "
+from django.contrib.auth.models import User
 from memos.models import Memo
-Memo.objects.create(title='サンプルメモ', content='これはサンプルです', owner='user1')
-Memo.objects.create(title='user2の秘密メモ', content='これはuser2の機密情報です。他のユーザーには見せられません。', owner='user2')
-Memo.objects.create(title='user2の業務メモ', content='明日の会議資料を準備する。重要な取引先の情報を含む。', owner='user2')
-"
-```
 
-5. サーバー起動
+# ユーザー作成
+user1 = User.objects.create_user(username='user1', password='password123er2 = User.objects.create_user(username='user2', password=password123 メモ作成
+Memo.objects.create(title='サンプルメモ', content=これはuser1のサンプルです', owner=user1)
+Memo.objects.create(title='user2密メモ', content='これはuser2の機密情報です。他のユーザーには見せられません。', owner=user2)
+Memo.objects.create(title='user2業務メモ', content=明日の会議資料を準備する。重要な取引先の情報を含む。, owner=user2)```
+
+5ー起動
 ```bash
 python manage.py runserver
 ```
